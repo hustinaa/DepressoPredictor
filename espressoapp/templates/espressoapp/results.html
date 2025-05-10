@@ -1,0 +1,36 @@
+{% extends 'espressoapp/base.html' %}
+{% load custom_filters %}
+
+{% block title %}Prediction Results{% endblock %}
+
+{% block content %}
+<br>
+<div class="container-results">  
+  <h4>Prediction Results</h4>
+  <div class="card">  
+    <div class="card-body">  
+      <div class="row">  
+        <div class="col-md-6">  
+          <p class="card-text"><strong>KNN Prediction:</strong> {{ prediction.knn_prediction|yes_no }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text"><strong>Decision Tree Prediction:</strong> {{ prediction.decision_tree_prediction|yes_no }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="card-text"><strong>KNN Accuracy:</strong> {{ knn_accuracy|floatformat:2 }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text"><strong>Decision Tree Accuracy:</strong> {{ decision_tree_accuracy|floatformat:2 }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="text-center">
+    <a href="{% url 'home' %}" class="btn btn-warning">Make another prediction</a>
+  </div>
+</div>
+
+{% endblock %}
